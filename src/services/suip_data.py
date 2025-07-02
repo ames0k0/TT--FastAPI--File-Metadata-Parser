@@ -11,6 +11,18 @@ class SuipDataService(BaseService):
     SUIP_HOST: str = "https://suip.biz/ru/?act=mat"
 
     def parse_file_metadata(self, file_bytes) -> dict:
+        """Uploades the given file to the 3-rd party service
+
+        Returns
+        -------
+        dict - Parsed response
+
+        Raises
+        ------
+        exceptions.ServiceIsUnavailable
+        exceptions.ContentIsMissing
+        exceptions.MetadataIsMissing
+        """
         try:
             response = requests.post(
                 url=self.SUIP_HOST,

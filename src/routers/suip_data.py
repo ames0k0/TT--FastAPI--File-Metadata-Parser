@@ -22,7 +22,7 @@ router = APIRouter(
 
 
 @router.get("")
-def download_record(
+def get_filtered_file_metadata(
     request: Request,
     session: sao.Session = Depends(dependency=dependencies.get_session),
 ):
@@ -38,7 +38,7 @@ def download_record(
     "parse",
     status_code=status.HTTP_201_CREATED,
 )
-def upload_record(
+def post_file_to_parse_metadata(
     file: Annotated[
         UploadFile,
         File(description="Файл для парсинга"),
