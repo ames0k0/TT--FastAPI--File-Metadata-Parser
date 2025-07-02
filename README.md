@@ -9,7 +9,7 @@ git clone \
   --depth=1 \
   https://github.com/ames0k0/TT--FastAPI--File-Metadata-Parser
 
-cd TT--Litestar--User-Management
+cd TT--FastAPI--File-Metadata-Parser
 ```
 
 ### Запуск проекта через Docker Compose
@@ -29,7 +29,7 @@ docker compose up -d --build
 
 
 ## REST API методы
-<details>
+- <details>
   <summary><strong>GET /suip-data</strong> - Список сохранённых результатов с возможностью фильтрации</summary>
 
   | Параметры запроса   | Тип       | Описание              |
@@ -82,7 +82,7 @@ docker compose up -d --build
 
 </details>
 
-<details>
+- <details>
   <summary><strong>POST /suip-data/parse</strong> - Ручной запуск парсинга</summary>
 
   | Тело запроса    | Тип   | Описание          |
