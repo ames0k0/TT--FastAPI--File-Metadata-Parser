@@ -1,0 +1,7 @@
+*.bkp
+static
+
+__pycache__
+*.py[cod]
+
+.python-version

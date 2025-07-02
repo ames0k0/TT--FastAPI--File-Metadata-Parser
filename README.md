@@ -25,6 +25,7 @@ docker compose up --build
 | Uvicorn                   | https://www.uvicorn.org/                                  |
 | SQLAlchemy                | https://www.sqlalchemy.org                                |
 | PostgreSQL                | https://www.postgresql.org/                               |
+| Pydantic                  | https://docs.pydantic.dev/latest/                         |
 | requests                  | https://requests.readthedocs.io/en/latest/                |
 | bs4                       | https://www.crummy.com/software/BeautifulSoup/bs4/doc/    |
 | Docker Compose            | https://docs.docker.com/compose                           |
