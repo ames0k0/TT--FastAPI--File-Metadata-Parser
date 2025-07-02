@@ -7,10 +7,7 @@ class Settings(BaseSettings):
     APP_HOST: str = "localhost"
     APP_PORT: int = 8000
 
-    # POSTGRES_DSN: PostgresDsn = Field(default=...)
-    POSTGRES_DSN: str = (
-        "postgresql+psycopg2://postgres:example@172.17.0.1:5432/tt__file_metadata"
-    )
+    POSTGRES_DSN: PostgresDsn = Field(default=...)
 
     STATIC_DIRECTORY: Path = Path("static") / "file_metadata"
     STATIC_DIRECTORY.mkdir(exist_ok=True, parents=True)

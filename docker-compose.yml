@@ -1,0 +1,39 @@
+services:
+  restapi:
+    build: .
+    image: file_metadata_parser__restapi:v0.1.0
+    container_name: file_metadata_parser__restapi
+    environment:
+      POSTGRES_DSN: postgresql+psycopg2://postgres:simple@database:5432/file_metadata_parser
+      APP_HOST: "0.0.0.0"
+      APP_PORT: 8000
+    links:
+      - database
+    depends_on:
+      database:
+        condition: service_healthy
+        restart: true
+    ports:
+      - 8000:8000
+    restart: unless-stopped
+  database:
+    image: postgres
+    container_name: file_metadata_parser__database
+    environment:
+      POSTGRES_PASSWORD: simple
+      POSTGRES_DB: file_metadata_parser
+      POSTGRES_USER: postgres
+      PGDATA: /var/lib/postgresql/data
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d file_metadata_parser"]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+    driver: local
