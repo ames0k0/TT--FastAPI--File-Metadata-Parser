@@ -136,6 +136,43 @@ docker compose down --volumes --rmi local
 ```
 
 <details>
+<summary>Файловая структура проекта</summary>
+
+```bash
+tree -a -I ".git|.venv|__pycache__|_readme|static|pgdata|__init__.py" --dirsfirst
+```
+<pre>
+.
+├── src
+│   ├── core
+│   │   ├── config.py
+│   │   ├── dependencies.py
+│   │   └── exceptions.py
+│   ├── database
+│   │   ├── app.py
+│   │   └── models.py
+│   ├── routers
+│   │   └── suip_data.py
+│   ├── services
+│   │   ├── base.py
+│   │   ├── database.py
+│   │   ├── storage.py
+│   │   └── suip_data.py
+│   ├── storage
+│   │   └── app.py
+│   └── main.py
+├── docker-compose.yml
+├── Dockerfile
+├── .gitignore
+├── pyproject.toml
+├── .python-version
+├── README.md
+├── requirements.txt
+└── uv.lock
+</pre>
+</details>
+
+<details>
   <summary>Использованные технологии</summary>
 
 | Название          | Ссылки                                                    |
