@@ -8,10 +8,7 @@ dependencies = [
     "bs4>=0.0.2",
     "fastapi>=0.115.14",
     "psycopg2-binary>=2.9.10",
-    "pydantic>=2.11.7",
-    "pydantic-settings>=2.10.1",
     "python-multipart>=0.0.20",
     "requests>=2.32.4",
-    "sqlalchemy>=2.0.41",
     "uvicorn>=0.35.0",
 ]

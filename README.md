@@ -190,5 +190,5 @@ tree -a -I ".git|.venv|__pycache__|_readme|static|pgdata|__init__.py" --dirsfirs
 
 <p align="center">
   <img src="./_readme/rest-api.png" />
-  <img src="./_readme/Diagram.drawio.png" />
+  <img src="./_readme/Diagram.png" />
 </p>
