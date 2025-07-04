@@ -1,11 +1,39 @@
 import requests
 from bs4 import BeautifulSoup
-
-from core import exceptions
-from .base import BaseService
+from fastapi import HTTPException, status
 
 
-class SuipDataService(BaseService):
+class ServiceIsUnavailable(HTTPException):
+    """SUIP Service is Unavailable"""
+
+    def __init__(self):
+        super().__init__(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail="ParserError: SUIP Service is Unavailable",
+        )
+
+
+class ContentIsMissing(HTTPException):
+    """Could not parse the result from metadata server"""
+
+    def __init__(self, missing_to_find: str):
+        super().__init__(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            detail=f"ParserError: Content for `{missing_to_find}` is missing!",
+        )
+
+
+class MetadataIsMissing(HTTPException):
+    """Could not parse the result from metadata server"""
+
+    def __init__(self):
+        super().__init__(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            detail="ParserError: No metadata found!",
+        )
+
+
+class SuipDataService:
     """SuipData Service"""
 
     SUIP_HOST: str = "https://suip.biz/ru/?act=mat"
@@ -31,20 +59,20 @@ class SuipDataService(BaseService):
                 },
             )
         except Exception:
-            raise exceptions.ServiceIsUnavailable()
+            raise ServiceIsUnavailable()
 
         if (not response) or (response.status_code != 200):
-            raise exceptions.ServiceIsUnavailable()
+            raise ServiceIsUnavailable()
 
         soup = BeautifulSoup(response.text, "html.parser")
 
         news_container = soup.find(name="div", class_="news")
         if news_container is None:
-            raise exceptions.ContentIsMissing("div.news")
+            raise ContentIsMissing("div.news")
 
         code_container = news_container.find("pre")  # type: ignore
         if code_container is None:
-            raise exceptions.ContentIsMissing("div.news.pre")
+            raise ContentIsMissing("div.news.pre")
 
         data = {}
 
@@ -60,6 +88,6 @@ class SuipDataService(BaseService):
             data[key] = value
 
         if not data:
-            raise exceptions.MetadataIsMissing()
+            raise MetadataIsMissing()
 
         return data

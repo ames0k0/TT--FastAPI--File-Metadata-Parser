@@ -38,15 +38,15 @@ docker compose up -d --build
 
   ```bash
   curl -X 'GET' \
-  'http://127.0.0.1:8000/suip-data' \
-  -H 'accept: application/json'
+    'http://127.0.0.1:8000/suip-data' \
+    -H 'accept: application/json'
   ```
 
   ```bash
   # MIME тип=application/pdf
   curl -X 'GET' \
-  'http://127.0.0.1:8000/suip-data?MIME%20%D1%82%D0%B8%D0%BF=application/pdf' \
-  -H 'accept: application/json'
+    'http://127.0.0.1:8000/suip-data?MIME%20%D1%82%D0%B8%D0%BF=application/pdf' \
+    -H 'accept: application/json'
   ```
 
   ```json
@@ -91,10 +91,10 @@ docker compose up -d --build
 
   ```bash
   curl -X 'POST' \
-  'http://127.0.0.1:8000/suip-dataparse' \
-  -H 'accept: application/json' \
-  -H 'Content-Type: multipart/form-data' \
-  -F 'file=@тестовое задания.pdf;type=application/pdf'
+    'http://127.0.0.1:8000/suip-dataparse' \
+    -H 'accept: application/json' \
+    -H 'Content-Type: multipart/form-data' \
+    -F 'file=@тестовое задания.pdf;type=application/pdf'
   ```
 
   ```json
@@ -188,5 +188,7 @@ tree -a -I ".git|.venv|__pycache__|_readme|static|pgdata|__init__.py" --dirsfirs
 
 </details>
 
-<p align="center"><img src="./_readme/rest-api.png" /></p>
-<p align="center"><img src="./_readme/Diagram.drawio.png" /></p>
+<p align="center">
+  <img src="./_readme/rest-api.png" />
+  <img src="./_readme/Diagram.drawio.png" />
+</p>

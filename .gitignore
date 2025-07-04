@@ -1,5 +1,6 @@
 *.bkp
 static
+pgdata
 
 __pycache__
 *.py[cod]
