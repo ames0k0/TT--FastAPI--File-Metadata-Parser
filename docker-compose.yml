@@ -4,7 +4,7 @@ services:
     image: file_metadata_parser__restapi:v0.1.0
     container_name: file_metadata_parser__restapi
     environment:
-      POSTGRES_DSN: postgresql+psycopg2://postgres:simple@database:5432/file_metadata_parser
+      POSTGRES_DSN: "user='postgres' password='simple' host='database' dbname='file_metadata_parser'"
       APP_HOST: "0.0.0.0"
       APP_PORT: 8000
     links:
